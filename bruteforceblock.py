@@ -7,7 +7,7 @@ import time
 #Concesionaria K1 433: 761661
 
 class bruteforceblock(gr.sync_block):
-    def __init__(self,number_start,number_finish,dictionary):
+    def __init__(self,number_start,number_finish,dictionary,time):
         gr.sync_block.__init__(self,
             name="custom_source_20bit",
             in_sig=None,
@@ -18,6 +18,7 @@ class bruteforceblock(gr.sync_block):
         self.call_count = 0  # Contador de llamadas a work
         self.nbits = dictionary["n"]
         self.dictionary = dictionary["encoding"]
+        self.time = time
     
 
     def work(self, input_items, output_items):
@@ -61,7 +62,7 @@ class bruteforceblock(gr.sync_block):
             print("Brute force complete, exiting...")
         
 
-        time.sleep(0.06)#50ms,the delay unlock is around max 90 codes 90*40ms=3.6s,cuando se manda muy rapido se pierde la senal no queda en buffer
+        time.sleep(self.time/1000)#60ms=0.06seg,the delay unlock is around max 90 codes 90*40ms=3.6s,cuando se manda muy rapido se pierde la senal no queda en buffer
         #11 horas i can crack whatever car with learning code
         return noutput_items
 

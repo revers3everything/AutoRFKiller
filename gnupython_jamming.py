@@ -23,7 +23,7 @@ from bruteforceblock import bruteforceblock
 
 class generatesignalunlock1(gr.top_block, Qt.QWidget):
 
-    def __init__(self,freq,dictionary,time1):
+    def __init__(self,freq,dictionary,time1,time):
         gr.top_block.__init__(self, "Brute Force 20-bit Code", catch_exceptions=True)
         Qt.QWidget.__init__(self)
         self.setWindowTitle("Brute Force 20-bit Code")
@@ -117,7 +117,7 @@ class generatesignalunlock1(gr.top_block, Qt.QWidget):
         self.osmosdr_sink_0.set_bandwidth(0, 0)
         # Replace vector source with custom source block
 
-        self.custom_source = bruteforceblock(1,int(time1/0.06),dictionary)
+        self.custom_source = bruteforceblock(1,int(time1/0.06),dictionary,time)
         self.blocks_throttle2_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate, True, 0 if "auto" == "auto" else max( int(float(0.1) * samp_rate) if "auto" == "time" else int(0.1), 1) )
         self.blocks_repeat_0 = blocks.repeat(gr.sizeof_gr_complex*1, 600)
         self.blocks_multiply_xx_0 = blocks.multiply_vcc(1)
@@ -183,7 +183,7 @@ def main(top_block_cls=generatesignalunlock1, options=None):
     time1 = int(input("Enter the jamming duration in seconds (e.g. 1/1000): "))
 
     qapp = Qt.QApplication(sys.argv)
-    tb = top_block_cls(freq,dictionary,time1)
+    tb = top_block_cls(freq,dictionary,time1,50)
 
     tb.start()
     tb.show()

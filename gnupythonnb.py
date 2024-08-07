@@ -23,7 +23,7 @@ from bruteforceblock import bruteforceblock
 
 class generatesignalunlock1(gr.top_block, Qt.QWidget):
 
-    def __init__(self,number_start,number_finish,freq,dictionary):
+    def __init__(self,number_start,number_finish,freq,dictionary,time):
         gr.top_block.__init__(self, "Brute Force 20-bit Code", catch_exceptions=True)
         Qt.QWidget.__init__(self)
         self.setWindowTitle("Brute Force 20-bit Code")
@@ -116,7 +116,7 @@ class generatesignalunlock1(gr.top_block, Qt.QWidget):
         self.osmosdr_sink_0.set_antenna('', 0)
         self.osmosdr_sink_0.set_bandwidth(0, 0)
         # Replace vector source with custom source block
-        self.custom_source = bruteforceblock(number_start,number_finish,dictionary)
+        self.custom_source = bruteforceblock(number_start,number_finish,dictionary,time)
         self.blocks_throttle2_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate, True, 0 if "auto" == "auto" else max( int(float(0.1) * samp_rate) if "auto" == "time" else int(0.1), 1) )
         self.blocks_repeat_0 = blocks.repeat(gr.sizeof_gr_complex*1, 600)
         self.blocks_multiply_xx_0 = blocks.multiply_vcc(1)
@@ -178,11 +178,12 @@ def main(top_block_cls=generatesignalunlock1, options=None):
     number_start = int(input("--> Enter the number to start brute force: "))
     number_finish = int(input("--> Enter the number to finish brute force: "))
     freq = int(input("--> Enter the frequency Tx in Hz (e.g., 315/370/433): "))*1000000
+    time = int(input("--> Enter the time between each code in miliseconds (e.g., 60/50/30): "))
     dictionary = createdict("HS2240",nbits)
 
     
     qapp = Qt.QApplication(sys.argv)
-    tb = top_block_cls(number_start,number_finish,freq,dictionary)
+    tb = top_block_cls(number_start,number_finish,freq,dictionary,time)
 
     tb.start()
     tb.show()
