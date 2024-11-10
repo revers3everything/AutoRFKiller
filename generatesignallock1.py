@@ -6,7 +6,7 @@
 #
 # GNU Radio Python Flow Graph
 # Title: Not titled yet
-# Author: sprintec
+# Author: revers3
 # GNU Radio version: 3.10.10.0
 
 from PyQt5 import Qt
@@ -16,6 +16,7 @@ from gnuradio import blocks
 from gnuradio import gr
 from gnuradio.filter import firdes
 from gnuradio.fft import window
+import convertlc
 import sys
 import signal
 from PyQt5 import Qt
@@ -215,10 +216,26 @@ class generatesignallock1(gr.top_block, Qt.QWidget):
 
 
 def main(top_block_cls=generatesignallock1, options=None):
-    freq = int(input("--> Enter the frequency Tx in MHz (e.g., 315/370/433): ")+"000000")
-    vector_bits_str = input("--> Enter bits (e.g. 1,0,0,0,1,0,1,1,1,1,0,1): ")
+    freq = int(input("--> Enter the transmision frequency in MHz (e.g., 315/370/433): ")+"000000")
+    option = input("--> Do you want to enter a learning code [1] or a custom code [2]: ")
+    #vector_bits_str = "1,0,0,0,1,0,1,1,1,1,0,1"
+    if option == "1":
+        num = int(input("---> Enter the learning code number ex. 360600: "))
+        vector_bits_str = convertlc.num2bits(num)
+        print(f"Encoded signal: {vector_bits_str}")
+        vector_bits = [complex(float(bit), 0) for bit in vector_bits_str]
+        time.sleep(2)
+    elif option == "2":
+        vector_bits_str = input("--> Enter bits (e.g. 1,0,0,0,1,0,1,1,1,1,0,1): ")
+        num = convertlc.bits2num(vector_bits_str)
+        print(f"Code in interger: {num}")
+        vector_bits = [complex(float(bit), 0) for bit in vector_bits_str.split(',')]
+        time.sleep(2)
+    else:
+        print("Error!, only choose 1 or 2")
+        exit()
     # Convert the input string to a list of complex numbers
-    vector_bits = [complex(float(bit), 0) for bit in vector_bits_str.split(',')]
+    
 
     qapp = Qt.QApplication(sys.argv)
 

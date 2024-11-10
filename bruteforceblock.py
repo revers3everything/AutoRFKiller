@@ -57,13 +57,13 @@ class bruteforceblock(gr.sync_block):
         noutput_items = min(len(out), len(signal))
         out[:noutput_items] = signal[:noutput_items]
 
-        if self.current_combination >= self.max_combinations:
+        if self.current_combination > self.max_combinations:
             self.complete = True
-            print("Brute force complete, exiting...")
+            print("Task completed, exiting...")
+            exit()
         
 
-        time.sleep(self.time/1000)#60ms=0.06seg,the delay unlock is around max 90 codes 90*40ms=3.6s,cuando se manda muy rapido se pierde la senal no queda en buffer
-        #11 horas i can crack whatever car with learning code
+        time.sleep(self.time/1000)#Transform from miliseconds to seconds
         return noutput_items
 
     def stop(self):

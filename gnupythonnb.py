@@ -175,15 +175,17 @@ def createdict(chip,nbits):
 
 def main(top_block_cls=generatesignalunlock1, options=None):
     nbits = int(input("--> Enter the number of bits: "))
-    number_start = int(input("--> Enter the number to start brute force: "))
-    number_finish = int(input("--> Enter the number to finish brute force: "))
-    freq = int(input("--> Enter the frequency Tx in Hz (e.g., 315/370/433): "))*1000000
-    time = int(input("--> Enter the time between each code in miliseconds (e.g., 60/50/30): "))
+    total = 2**nbits
+    number_start = int(input(f"--> Enter the number to start brute force [0-{total}]:"))
+    number_finish = int(input(f"--> Enter the number to finish brute force [0-{total}]:"))
+    delay = int(input("--> Enter the time between each code in miliseconds (e.g., 60/50/30): "))
+    print("Attack duration: "+str((number_finish-number_start)*(delay/1000))+" seconds")#Transform ms to seconds and multiply by n times
+    freq = int(input("--> Enter the transmision frequency in Hz (e.g., 315/370/433): "))*1000000
     dictionary = createdict("HS2240",nbits)
 
     
     qapp = Qt.QApplication(sys.argv)
-    tb = top_block_cls(number_start,number_finish,freq,dictionary,time)
+    tb = top_block_cls(number_start,number_finish,freq,dictionary,delay)
 
     tb.start()
     tb.show()
