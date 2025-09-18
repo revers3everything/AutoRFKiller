@@ -1,6 +1,6 @@
 # AutoRFKiller
 
-**AutoRFKiller v1** is an RF automotive security tool designed to help auditors, researchers and security enthusiasts evaluate car Keyless Entry Systems (KES). It supports identification and testing of three common KES schemes: **Rolling Code**, **Learning Code**, and **Fixed Code**.
+**AutoRFKiller v1** is an RF automotive security tool designed to help auditors, researchers and security enthusiasts evaluate car Keyless Entry Systems (KES). It supports identification and testing of three common KES schemes: **Rolling Code**, **Learning Code**, and **Fixed Code**. Also, this is the exploit for the CVEs: CVE-2025-6030 & CVE-2025-6029. Full research: https://revers3everything.com/unlocking-thousands-of-cars-by-exploiting-learning-codes-from-key-fobs/
 
 > Presented at DEF CON 32: https://www.youtube.com/watch?v=es72oviu0Lg
 
@@ -21,7 +21,7 @@
 
 ## Overview
 
-AutoRFKiller helps you identify and evaluate vulnerabilities in automotive keyless entry systems. The tool can detect whether a vehicle uses Rolling, Learning or Fixed code schemes and offers a set of testing features to demonstrate potential weaknesses for research and defensive purposes.
+AutoRFKiller helps you identify and evaluate vulnerabilities in automotive keyless entry systems. The tool can detect whether a vehicle uses Rolling, Learning or Fixed code schemes and offers a set of testing features to demonstrate potential weaknesses for research and defensive purposes. This tool allow you to exploit the CVEs: CVE-2025-6030 and CVE-2025-6029.
 
 **Important:** this project is intended for legitimate security research, testing on systems you own, or systems for which you have explicit written permission to test. See the **Responsible use & legal notice** section below.
 
