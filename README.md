@@ -144,3 +144,10 @@ Contributions are welcome,bug reports, documentation improvements, and responsib
 
 Please contact: `revers3everything@gmail.com`
 When contributing, include: a short description, reproduction steps (non-sensitive), and any relevant information.
+
+---
+
+## Author
+
+Danilo Erazo - Independent Automotive Security Researcher, Bug Hunter
+X: @revers3vrything
