@@ -118,7 +118,8 @@ class generatesignalunlock1(gr.top_block, Qt.QWidget):
         self.osmosdr_sink_0.set_bandwidth(0, 0)
         # Replace vector source with custom source block
         self.custom_source = bruteforceblock(number_start,number_finish,dictionary,time)
-        self.blocks_throttle2_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate, True, 0 if "auto" == "auto" else max( int(float(0.1) * samp_rate) if "auto" == "time" else int(0.1), 1) )
+        #self.blocks_throttle2_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate, True, 0 if "auto" == "auto" else max( int(float(0.1) * samp_rate) if "auto" == "time" else int(0.1), 1) )
+        self.blocks_throttle2_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate, True)
         self.blocks_repeat_0 = blocks.repeat(gr.sizeof_gr_complex*1, 600)
         self.blocks_multiply_xx_0 = blocks.multiply_vcc(1)
         self.blocks_complex_to_mag_squared_0 = blocks.complex_to_mag_squared(1)

@@ -28,8 +28,8 @@ def main_menu():
                         ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓████████▓▒░▒▓████████▓▒░▒▓████████▓▒░▒▓█▓▒░░▒▓█▓▒░        
                                                                                                         
                                             [Author: Danilo Erazo -> revers3 everything]
-                                                            Version: 3.0
-                                                              November 2024
+                                                            Version: 1.0
+                                                              July 2024
                                                         [Car Key Fob Hacking]
     """
 
@@ -39,7 +39,7 @@ def main_menu():
 [Description]: AUTORFKILLER IS A TOOL THAT ALLOWS YOU TO UNLOCK CARS.
           
           A brute force attack can be carried out on learning codes/fixed codes since it contains a
-          complete database with the coding and modulation carried out by the all IC chips that emit
+          complete database with the coding and modulation carried out by some IC chips that emit
           learning codes/fixed codes. Also, you can test if your car is vulnerable to relay attacks
           (learning/fixed codes). You can create and send jamming signals to execute RollJam attacks.
           Finally, you can create an RF signal with the parameters you want, this can be used to

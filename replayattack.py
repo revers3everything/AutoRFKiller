@@ -11,7 +11,7 @@ def replay_signal(sample_rate, frequency, file_name):
     os.system(command)
 
 def main3():
-    sample_rate = input("Enter the sample rate in MHz: ")+"000000"
+    sample_rate = input("Enter the sample rate in MHz [2 Mhz most of the cases]: ")+"000000"
     frequency = input("Enter the transmision frequency in MHz (e.g., 315/370/433): ")+"000000"
     file_name = "signal"
     
