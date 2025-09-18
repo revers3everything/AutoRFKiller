@@ -55,6 +55,13 @@ pip install PyQt5
 
 ---
 
+## How to run
+```bash
+python3 autorfkiller.py
+```
+
+---
+
 ## Features
 
 > The feature descriptions below describe the tool’s capabilities for defensive testing and research. Do not use these features on vehicles you do not own or do not have explicit authorization to test.
