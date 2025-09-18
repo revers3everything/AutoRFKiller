@@ -103,7 +103,7 @@ Proof-of-concept demo:
 ---
 
 ### 5) RollJam (demonstration)
-RollJam demonstrates a vulnerability class affecting some rolling-code systems. It is a man-in-the-middle style test that typically requires two SDRs and coordinated capture/jamming/replay. This is an advanced test intended for controlled lab environments or authorized assessments only.
+RollJam demonstrates a vulnerability class affecting some rolling-code systems. It is a man-in-the-middle style test that typically requires two SDRs and coordinated capture/jamming/replay. This is an advanced test intended for controlled lab environments or authorized assessments only. So, here you need two SDR devices and run the tool two times. The first one is to execute the feature "[4] Send a Jamming Signal" to inhibit the spectrum and at the same time you need to run the feature "[3] Record and Replay an RF Signal" to replay the signal that dont arrive to the car KES receive due to the jamming attack. This attack is know as rolljam and this is vulnerable all the cars with rolling code, this is a MITM attack.
 
 Proof-of-concept demo:  
 - https://www.youtube.com/watch?v=ZlIZA4SCC0s
