@@ -17,8 +17,6 @@
 - [Usage notes & troubleshooting](#usage-notes--troubleshooting)  
 - [Responsible use & legal notice](#responsible-use--legal-notice)  
 - [Contributions](#contributions)  
-- [License](#license)
-
 ---
 
 ## Overview
