@@ -1,10 +1,6 @@
 import numpy as np
 from gnuradio import gr
 import time
-#Mycar: K1 370 unassembled: 360600
-#Mycar: K2 370 assembled: 351236
-#Hrmana mrcdez car: K3 370: 562168
-#Concesionaria K1 433: 761661
 
 class bruteforceblock(gr.sync_block):
     def __init__(self,number_start,number_finish,dictionary,time):
